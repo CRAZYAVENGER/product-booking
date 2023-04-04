@@ -19,7 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->integer('mobile');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->string('password');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +31,10 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+    
     public function down()
     {
         Schema::dropIfExists('users');

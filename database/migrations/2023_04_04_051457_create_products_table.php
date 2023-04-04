@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->integer('price');
             $table->integer('discount')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ Route::get('/', function () {
 });
 // Route::get('/report',  [App\Http\Controllers\ReportController::class, 'index']);
 Route::controller(ReportController::class)->group(function(){
-    Route::get('index', 'index');    
+    // Route::get('index', 'index');    
     Route::get('export/excel', 'export')->name('export.excel');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('products', ProductController::class);
